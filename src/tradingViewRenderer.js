@@ -9,13 +9,15 @@ export default async function tradingViewrenderer(ds, config, el) {
 	} else {
 		values = ds.values
 	}
-	const chart = createChart(el, { timeScale: {
-		timeVisible: true,
-		secondsVisible: false,
-	} })
+	const chart = createChart(el, {
+		timeScale: {
+			timeVisible: true,
+			secondsVisible: false,
+		}
+	})
 	const candlestickSeries = chart.addCandlestickSeries()
 	const data = []
-	for (let i=0; i< values.length; i++) {
+	for (let i = 0; i < values.length; i++) {
 		let trade = {
 			time: Math.round(new Date(values[i]?.timeInterval?.minute).getTime() / 1000),
 			open: +values[i].open,
@@ -25,6 +27,12 @@ export default async function tradingViewrenderer(ds, config, el) {
 		}
 		data.push(trade)
 	}
-	console.log('hui', data)
 	candlestickSeries.setData(data)
+	function reportWindowSize() {
+		chart.applyOptions({
+			width: document.getElementById(el).clientWidth,
+			height: document.getElementById(el).clientHeight
+		});
+	}
+	window.addEventListener('resize', reportWindowSize)
 }
