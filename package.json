@@ -38,6 +38,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
+    "element-resize-event": "^3.0.6",
     "lightweight-charts": "^3.6.1"
   }
 }

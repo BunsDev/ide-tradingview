@@ -1,4 +1,5 @@
 import { createChart } from 'lightweight-charts'
+import elementResizeEvent from 'element-resize-event'
 
 export default async function tradingViewrenderer(ds, config, el) {
 	let values = undefined
@@ -29,10 +30,14 @@ export default async function tradingViewrenderer(ds, config, el) {
 	}
 	candlestickSeries.setData(data)
 	function reportWindowSize() {
+		console.log('wow')
 		chart.applyOptions({
 			width: document.getElementById(el).clientWidth,
 			height: document.getElementById(el).clientHeight
 		});
 	}
-	window.addEventListener('resize', reportWindowSize)
+	let element = document.getElementById(el).parentNode
+	elementResizeEvent(element, function() {
+		reportWindowSize()
+	})
 }
