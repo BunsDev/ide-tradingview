@@ -14,8 +14,14 @@ class TradingView {
 	}
 	supportsModel(model) {
 		for (let key in model) {
-			return (model[key].typeInfo.toString()[0]==='[' 
-				&& model[key].typeInfo.toString().slice(-2, -1)!=='0') || key === 'data'
+			return key.split('.')[key.split('.').length-1] === 'dexTrades' &&
+			model[key].selectionSet.selections.map(selection =>
+				selection.alias &&
+				(selection.alias.value === 'open' ||
+				selection.alias.value === 'high' ||
+				selection.alias.value === 'low' ||
+				selection.alias.value === 'close') === true
+			).filter(item => item).length === 4
 		}
 	}
 }
