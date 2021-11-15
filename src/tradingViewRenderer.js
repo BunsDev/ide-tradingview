@@ -2,6 +2,8 @@ import { createChart } from 'lightweight-charts'
 import elementResizeEvent from 'element-resize-event'
 
 export default async function tradingViewrenderer(ds, config, el) {
+	const thisTV = document.getElementById(el).firstChild
+	thisTV && document.getElementById(el).removeChild(thisTV)
 	let values = undefined
 	if (!ds.values) {
 		const data = await ds.fetcher()
