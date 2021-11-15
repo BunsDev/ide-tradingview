@@ -30,7 +30,6 @@ export default async function tradingViewrenderer(ds, config, el) {
 	}
 	candlestickSeries.setData(data)
 	function reportWindowSize() {
-		console.log('wow')
 		chart.applyOptions({
 			width: document.getElementById(el).clientWidth,
 			height: document.getElementById(el).clientHeight

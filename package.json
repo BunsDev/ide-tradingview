@@ -1,6 +1,6 @@
 {
   "name": "@bitquery/ide-tradingview",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "tradingview widget",
   "main": "dist/index.js",
   "scripts": {

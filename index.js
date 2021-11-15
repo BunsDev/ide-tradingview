@@ -7,6 +7,10 @@ class TradingView {
 		this.name = 'Trading View'
 		this.editor = TradingViewEditor
 		this.renderer = tradingViewRenderer
+		this.source = 'node_modules/@bitquery/ide-tradingview/src/tradingViewRenderer.js'
+		this.dependencies = [
+			'https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js'
+		]
 	}
 	supportsModel(model) {
 		for (let key in model) {
